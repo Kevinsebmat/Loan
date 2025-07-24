@@ -1,0 +1,40 @@
+{
+  "name": "loan",
+  "version": "1.0.0",
+  "description": "Multi-Step Loan Application Builder",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kevinsebmat/Loan.git"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "typescript",
+    "loan-application"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hookform/resolvers": "^3.0.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.4.21",
+    "next": "^14.0.0",
+    "postcss": "^8.5.6",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-hook-form": "^7.0.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.0.0",
+    "zod": "^3.0.0",
+    "zustand": "^4.0.0"
+  }
+}
