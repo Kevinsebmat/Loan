@@ -7,10 +7,10 @@ import { useLoanStore } from '@/lib/store';
 
 interface LoanDetailsStepProps {
   onNext: () => void;
-  onBack: () => void;
+  onPrevious: () => void;
 }
 
-const LoanDetailsStep = ({ onNext, onBack }: LoanDetailsStepProps) => {
+const LoanDetailsStep = ({ onNext, onPrevious }: LoanDetailsStepProps) => {
   const { application, updateLoanDetails } = useLoanStore();
   
   const {
@@ -147,7 +147,7 @@ const LoanDetailsStep = ({ onNext, onBack }: LoanDetailsStepProps) => {
           <div className="flex justify-between pt-6">
             <button
               type="button"
-              onClick={onBack}
+              onClick={onPrevious}
               className="btn-secondary"
             >
               Back

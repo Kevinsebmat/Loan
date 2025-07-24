@@ -29,13 +29,13 @@ const PersonalInfoStep = ({ onNext }: PersonalInfoStepProps) => {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">Personal Information</h2>
+      <div className="card p-8">
+        <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent mb-6">Personal Information</h2>
         
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 First Name *
               </label>
               <input
@@ -51,7 +51,7 @@ const PersonalInfoStep = ({ onNext }: PersonalInfoStepProps) => {
             </div>
 
             <div>
-              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Last Name *
               </label>
               <input
@@ -69,7 +69,7 @@ const PersonalInfoStep = ({ onNext }: PersonalInfoStepProps) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Email Address *
               </label>
               <input
@@ -85,7 +85,7 @@ const PersonalInfoStep = ({ onNext }: PersonalInfoStepProps) => {
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Phone Number *
               </label>
               <input
@@ -93,7 +93,9 @@ const PersonalInfoStep = ({ onNext }: PersonalInfoStepProps) => {
                 type="tel"
                 id="phone"
                 className="input-field"
-                placeholder="Enter your phone number"
+                placeholder="(555) 123-4567"
+                pattern="[\d\s\-\(\)\+]{10,}"
+                title="Please enter a valid phone number (e.g., 555-123-4567 or (555) 123-4567)"
               />
               {errors.phone && (
                 <p className="error-message">{errors.phone.message}</p>
@@ -102,7 +104,22 @@ const PersonalInfoStep = ({ onNext }: PersonalInfoStepProps) => {
           </div>
 
           <div>
-            <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="dateOfBirth" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Date of Birth *
+            </label>
+            <input
+              {...register('dateOfBirth')}
+              type="date"
+              id="dateOfBirth"
+              className="input-field"
+            />
+            {errors.dateOfBirth && (
+              <p className="error-message">{errors.dateOfBirth.message}</p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="address" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Street Address *
             </label>
             <input
@@ -119,7 +136,7 @@ const PersonalInfoStep = ({ onNext }: PersonalInfoStepProps) => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="city" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 City *
               </label>
               <input
@@ -135,7 +152,7 @@ const PersonalInfoStep = ({ onNext }: PersonalInfoStepProps) => {
             </div>
 
             <div>
-              <label htmlFor="state" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="state" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 State *
               </label>
               <input
@@ -152,7 +169,7 @@ const PersonalInfoStep = ({ onNext }: PersonalInfoStepProps) => {
             </div>
 
             <div>
-              <label htmlFor="zipCode" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="zipCode" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 ZIP Code *
               </label>
               <input
@@ -164,39 +181,6 @@ const PersonalInfoStep = ({ onNext }: PersonalInfoStepProps) => {
               />
               {errors.zipCode && (
                 <p className="error-message">{errors.zipCode.message}</p>
-              )}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label htmlFor="dateOfBirth" className="block text-sm font-medium text-gray-700 mb-2">
-                Date of Birth *
-              </label>
-              <input
-                {...register('dateOfBirth')}
-                type="date"
-                id="dateOfBirth"
-                className="input-field"
-              />
-              {errors.dateOfBirth && (
-                <p className="error-message">{errors.dateOfBirth.message}</p>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="ssn" className="block text-sm font-medium text-gray-700 mb-2">
-                Social Security Number *
-              </label>
-              <input
-                {...register('ssn')}
-                type="text"
-                id="ssn"
-                className="input-field"
-                placeholder="XXX-XX-XXXX"
-              />
-              {errors.ssn && (
-                <p className="error-message">{errors.ssn.message}</p>
               )}
             </div>
           </div>

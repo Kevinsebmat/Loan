@@ -8,7 +8,6 @@ export interface PersonalInfo {
   state: string;
   zipCode: string;
   dateOfBirth: string;
-  ssn: string;
 }
 
 export interface EmploymentInfo {

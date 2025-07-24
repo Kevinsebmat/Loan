@@ -7,10 +7,10 @@ import { useLoanStore } from '@/lib/store';
 
 interface EmploymentStepProps {
   onNext: () => void;
-  onBack: () => void;
+  onPrevious: () => void;
 }
 
-const EmploymentStep = ({ onNext, onBack }: EmploymentStepProps) => {
+const EmploymentStep = ({ onNext, onPrevious }: EmploymentStepProps) => {
   const { application, updateEmploymentInfo } = useLoanStore();
   
   const {
@@ -125,7 +125,7 @@ const EmploymentStep = ({ onNext, onBack }: EmploymentStepProps) => {
           </div>
 
           <div>
-            <label htmlFor="workPhone" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="workPhone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Work Phone Number *
             </label>
             <input
@@ -133,7 +133,9 @@ const EmploymentStep = ({ onNext, onBack }: EmploymentStepProps) => {
               type="tel"
               id="workPhone"
               className="input-field"
-              placeholder="Enter your work phone number"
+              placeholder="(555) 123-4567"
+              pattern="[\d\s\-\(\)\+]{10,}"
+              title="Please enter a valid work phone number (e.g., 555-123-4567 or (555) 123-4567)"
             />
             {errors.workPhone && (
               <p className="error-message">{errors.workPhone.message}</p>
@@ -143,7 +145,7 @@ const EmploymentStep = ({ onNext, onBack }: EmploymentStepProps) => {
           <div className="flex justify-between pt-6">
             <button
               type="button"
-              onClick={onBack}
+              onClick={onPrevious}
               className="btn-secondary"
             >
               Back

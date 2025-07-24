@@ -4,11 +4,11 @@ import { useLoanStore } from '@/lib/store';
 import { memo } from 'react';
 
 interface ReviewStepProps {
-  onBack: () => void;
-  onSubmit: () => void;
+  onNext: () => void;
+  onPrevious: () => void;
 }
 
-const ReviewStep = memo(({ onBack, onSubmit }: ReviewStepProps) => {
+const ReviewStep = memo(({ onNext, onPrevious }: ReviewStepProps) => {
   const { application } = useLoanStore();
 
   const formatCurrency = (amount: number) => {
@@ -40,33 +40,33 @@ const ReviewStep = memo(({ onBack, onSubmit }: ReviewStepProps) => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">Review & Submit</h2>
+      <div className="card p-8">
+        <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent mb-6">Review & Submit</h2>
         
         <div className="space-y-8">
           {/* Personal Information Section */}
-          <div className="border-b border-gray-200 pb-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Personal Information</h3>
+          <div className="border-b border-gray-200 dark:border-gray-700 pb-6">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Personal Information</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <span className="text-sm font-medium text-gray-500">Full Name</span>
-                <p className="text-gray-800">{application.personalInfo.firstName} {application.personalInfo.lastName}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Full Name</span>
+                <p className="text-gray-800 dark:text-gray-200">{application.personalInfo.firstName} {application.personalInfo.lastName}</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Email</span>
-                <p className="text-gray-800">{application.personalInfo.email}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Email</span>
+                <p className="text-gray-800 dark:text-gray-200">{application.personalInfo.email}</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Phone</span>
-                <p className="text-gray-800">{application.personalInfo.phone}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Phone</span>
+                <p className="text-gray-800 dark:text-gray-200">{application.personalInfo.phone}</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Date of Birth</span>
-                <p className="text-gray-800">{formatDate(application.personalInfo.dateOfBirth)}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Date of Birth</span>
+                <p className="text-gray-800 dark:text-gray-200">{formatDate(application.personalInfo.dateOfBirth)}</p>
               </div>
               <div className="md:col-span-2">
-                <span className="text-sm font-medium text-gray-500">Address</span>
-                <p className="text-gray-800">
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Address</span>
+                <p className="text-gray-800 dark:text-gray-200">
                   {application.personalInfo.address}<br />
                   {application.personalInfo.city}, {application.personalInfo.state} {application.personalInfo.zipCode}
                 </p>
@@ -75,93 +75,77 @@ const ReviewStep = memo(({ onBack, onSubmit }: ReviewStepProps) => {
           </div>
 
           {/* Employment Information Section */}
-          <div className="border-b border-gray-200 pb-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Employment & Income</h3>
+          <div className="border-b border-gray-200 dark:border-gray-700 pb-6">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Employment & Income</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <span className="text-sm font-medium text-gray-500">Employer</span>
-                <p className="text-gray-800">{application.employmentInfo.employer}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Employer</span>
+                <p className="text-gray-800 dark:text-gray-200">{application.employmentInfo.employer}</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Position</span>
-                <p className="text-gray-800">{application.employmentInfo.position}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Position</span>
+                <p className="text-gray-800 dark:text-gray-200">{application.employmentInfo.position}</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Employment Type</span>
-                <p className="text-gray-800">{formatEmploymentType(application.employmentInfo.employmentType)}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Employment Type</span>
+                <p className="text-gray-800 dark:text-gray-200">{formatEmploymentType(application.employmentInfo.employmentType)}</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Monthly Income</span>
-                <p className="text-gray-800">{formatCurrency(application.employmentInfo.monthlyIncome)}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Monthly Income</span>
+                <p className="text-gray-800 dark:text-gray-200">{formatCurrency(application.employmentInfo.monthlyIncome)}</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Employment Duration</span>
-                <p className="text-gray-800">{application.employmentInfo.employmentDuration} months</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Employment Duration</span>
+                <p className="text-gray-800 dark:text-gray-200">{application.employmentInfo.employmentDuration} months</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Work Phone</span>
-                <p className="text-gray-800">{application.employmentInfo.workPhone}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Work Phone</span>
+                <p className="text-gray-800 dark:text-gray-200">{application.employmentInfo.workPhone}</p>
               </div>
             </div>
           </div>
 
           {/* Loan Details Section */}
-          <div className="border-b border-gray-200 pb-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Loan Details</h3>
+          <div className="border-b border-gray-200 dark:border-gray-700 pb-6">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Loan Details</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <span className="text-sm font-medium text-gray-500">Loan Amount</span>
-                <p className="text-gray-800">{formatCurrency(application.loanDetails.amount)}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Loan Amount</span>
+                <p className="text-gray-800 dark:text-gray-200">{formatCurrency(application.loanDetails.amount)}</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Loan Term</span>
-                <p className="text-gray-800">{application.loanDetails.term} months</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Loan Purpose</span>
+                <p className="text-gray-800 dark:text-gray-200">{formatPurpose(application.loanDetails.purpose)}</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Loan Purpose</span>
-                <p className="text-gray-800">{formatPurpose(application.loanDetails.purpose)}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Loan Term</span>
+                <p className="text-gray-800 dark:text-gray-200">{application.loanDetails.term} months</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Collateral</span>
-                <p className="text-gray-800">{application.loanDetails.collateral ? 'Yes' : 'No'}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Collateral</span>
+                <p className="text-gray-800 dark:text-gray-200">{application.loanDetails.collateral ? 'Yes' : 'No'}</p>
               </div>
               {application.loanDetails.collateral && application.loanDetails.collateralDescription && (
                 <div className="md:col-span-2">
-                  <span className="text-sm font-medium text-gray-500">Collateral Description</span>
-                  <p className="text-gray-800">{application.loanDetails.collateralDescription}</p>
+                  <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Collateral Description</span>
+                  <p className="text-gray-800 dark:text-gray-200">{application.loanDetails.collateralDescription}</p>
                 </div>
               )}
             </div>
           </div>
-
-          {/* Terms and Conditions */}
-          <div className="bg-gray-50 rounded-lg p-4">
-            <div className="flex items-start">
-              <input
-                type="checkbox"
-                id="terms"
-                className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded focus:ring-primary-500 focus:ring-2 mt-1"
-                required
-              />
-              <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
-                I certify that all information provided in this application is true and accurate to the best of my knowledge. 
-                I understand that providing false information may result in the denial of my loan application and potential legal consequences.
-              </label>
-            </div>
-          </div>
         </div>
 
-        <div className="flex justify-between pt-6">
+        <div className="flex justify-between pt-8">
           <button
             type="button"
-            onClick={onBack}
+            onClick={onPrevious}
             className="btn-secondary"
           >
             Back
           </button>
           <button
             type="button"
-            onClick={onSubmit}
+            onClick={onNext}
             className="btn-primary"
           >
             Submit Application
